@@ -1,0 +1,22 @@
+# Core
+python-dotenv>=1.0.0
+pandas>=2.0.0
+sqlalchemy>=2.0.0
+requests>=2.31.0
+
+# LangChain ecosystem
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langchain-community>=0.2.0
+
+# OpenAI
+openai>=1.30.0
+
+# Web UI
+streamlit>=1.35.0
+
+# PDF export
+reportlab>=4.1.0
+
+# Database
+# sqlite3 is part of Python stdlib — no install needed
