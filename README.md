@@ -1,44 +1,44 @@
-# 🧠 Multi-Tool Medical Agent
+﻿# ðŸ§  Multi-Tool Medical Agent
 
 An AI-driven medical assistant built with **OpenAI GPT-4o**, **LangChain**, and **SQLite**, featuring a **Streamlit web UI**, **conversation memory**, **PDF report export**, and support for **5 medical datasets**.
 
 ---
 
-## 🆕 What's New (v2.0)
+## ðŸ†• What's New (v2.0)
 
 | Feature | Description |
 |---|---|
-| 🖥️ **Streamlit Web UI** | Full chat interface with example queries and live responses |
-| 🧠 **Conversation Memory** | Remembers the last 10 turns — ask follow-up questions naturally |
-| 📄 **PDF Report Export** | Export the full session as a formatted PDF with one click |
-| 🌬️ **Asthma Dataset** | New `AsthmaDBTool` for asthma diagnosis queries |
-| 🫘 **Kidney Disease Dataset** | New `KidneyDBTool` for chronic kidney disease queries |
+| ðŸ–¥ï¸ **Streamlit Web UI** | Full chat interface with example queries and live responses |
+| ðŸ§  **Conversation Memory** | Remembers the last 10 turns â€” ask follow-up questions naturally |
+| ðŸ“„ **PDF Report Export** | Export the full session as a formatted PDF with one click |
+| ðŸŒ¬ï¸ **Asthma Dataset** | New `AsthmaDBTool` for asthma diagnosis queries |
+| ðŸ«˜ **Kidney Disease Dataset** | New `KidneyDBTool` for chronic kidney disease queries |
 
 ---
 
-## 🎯 Objective: Intelligent Medical Query Router
+## ðŸŽ¯ Objective: Intelligent Medical Query Router
 
 This project creates a **Multi-Tool OpenAI Agent** that automatically routes questions to the correct source:
 
-1. 🩺 **Structured medical data (SQL):** Statistical questions about 5 medical datasets.
-2. 🌐 **General medical web search:** Definitions, symptoms, treatments, and more.
+1. ðŸ©º **Structured medical data (SQL):** Statistical questions about 5 medical datasets.
+2. ðŸŒ **General medical web search:** Definitions, symptoms, treatments, and more.
 
 ---
 
-## 🧩 Tools Overview
+## ðŸ§© Tools Overview
 
 | Tool | Dataset | Access |
 |---|---|---|
 | `HeartDiseaseDBTool` | Heart Disease | SQLite |
 | `CancerDBTool` | Cancer Prediction | SQLite |
 | `DiabetesDBTool` | Diabetes | SQLite |
-| `AsthmaDBTool` | ⭐ Asthma | SQLite |
-| `KidneyDBTool` | ⭐ Chronic Kidney Disease | SQLite |
+| `AsthmaDBTool` | â­ Asthma | SQLite |
+| `KidneyDBTool` | â­ Chronic Kidney Disease | SQLite |
 | `MedicalWebSearchTool` | Web (DuckDuckGo) | HTTP |
 
 ---
 
-## 🧰 Tech Stack
+## ðŸ§° Tech Stack
 
 | Component | Technology |
 |---|---|
@@ -52,7 +52,7 @@ This project creates a **Multi-Tool OpenAI Agent** that automatically routes que
 
 ---
 
-## 📊 Datasets
+## ðŸ“Š Datasets
 
 | Dataset | Source |
 |---|---|
@@ -64,16 +64,16 @@ This project creates a **Multi-Tool OpenAI Agent** that automatically routes que
 
 ---
 
-## ⚙️ Setup Instructions
+## âš™ï¸ Setup Instructions
 
-### 1️⃣ Clone the Repository
+### 1ï¸âƒ£ Clone the Repository
 
 ```bash
-git clone https://github.com/samar018/Multi-Tool-Medical-Agent.git
-cd Multi-Tool-Medical-Agent
+git clone https://github.com/OmlanHasan007/medical-tool-Multi-Agent.git
+cd medical-tool-Multi-Agent
 ```
 
-### 2️⃣ Create Virtual Environment
+### 2ï¸âƒ£ Create Virtual Environment
 
 ```bash
 python -m venv venv
@@ -81,20 +81,20 @@ source venv/bin/activate        # macOS/Linux
 venv\Scripts\activate           # Windows
 ```
 
-### 3️⃣ Install Dependencies
+### 3ï¸âƒ£ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Add OpenAI API Key
+### 4ï¸âƒ£ Add OpenAI API Key
 
 ```bash
 cp .env.example .env
 # Edit .env and paste your OPENAI_API_KEY
 ```
 
-### 5️⃣ Prepare Databases
+### 5ï¸âƒ£ Prepare Databases
 
 Download the CSV files from Kaggle into the `data/` folder, then run:
 
@@ -108,7 +108,7 @@ python scripts/convert_csv_to_sqlite.py data/kidney.csv kidney.db --table-name k
 
 ---
 
-## 🚀 Running the Agent
+## ðŸš€ Running the Agent
 
 ### Web UI (Recommended)
 
@@ -126,37 +126,37 @@ python main_agent.py
 
 ---
 
-## 📁 Project Structure
+## ðŸ“ Project Structure
 
 ```
 multi-tool-med-agent/
-├── app.py                        # ⭐ Streamlit Web UI
-├── main_agent.py                 # Agent builder + CLI entry point
-├── tools/
-│   ├── __init__.py
-│   ├── base_db_tool.py           # Shared SQL agent base class
-│   ├── heart_tool.py
-│   ├── cancer_tool.py
-│   ├── diabetes_tool.py
-│   ├── asthma_tool.py            # ⭐ New
-│   ├── kidney_tool.py            # ⭐ New
-│   └── web_search_tool.py
-├── utils/
-│   ├── __init__.py
-│   └── pdf_report.py             # ⭐ PDF export (ReportLab)
-├── scripts/
-│   └── convert_csv_to_sqlite.py
-├── data/                         # Raw CSVs (not committed)
-├── exports/                      # Generated PDFs (not committed)
-├── requirements.txt
-├── .env.example
-├── .gitignore
-└── README.md
+â”œâ”€â”€ app.py                        # â­ Streamlit Web UI
+â”œâ”€â”€ main_agent.py                 # Agent builder + CLI entry point
+â”œâ”€â”€ tools/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ base_db_tool.py           # Shared SQL agent base class
+â”‚   â”œâ”€â”€ heart_tool.py
+â”‚   â”œâ”€â”€ cancer_tool.py
+â”‚   â”œâ”€â”€ diabetes_tool.py
+â”‚   â”œâ”€â”€ asthma_tool.py            # â­ New
+â”‚   â”œâ”€â”€ kidney_tool.py            # â­ New
+â”‚   â””â”€â”€ web_search_tool.py
+â”œâ”€â”€ utils/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â””â”€â”€ pdf_report.py             # â­ PDF export (ReportLab)
+â”œâ”€â”€ scripts/
+â”‚   â””â”€â”€ convert_csv_to_sqlite.py
+â”œâ”€â”€ data/                         # Raw CSVs (not committed)
+â”œâ”€â”€ exports/                      # Generated PDFs (not committed)
+â”œâ”€â”€ requirements.txt
+â”œâ”€â”€ .env.example
+â”œâ”€â”€ .gitignore
+â””â”€â”€ README.md
 ```
 
 ---
 
-## 💡 Example Queries
+## ðŸ’¡ Example Queries
 
 | Query | Routed To |
 |---|---|
@@ -169,7 +169,7 @@ multi-tool-med-agent/
 
 ---
 
-## ⚠️ Safety Note
+## âš ï¸ Safety Note
 
 LLM-generated SQL queries are used against **read-only** SQLite files. Never connect this agent to a writable or production database.
 
@@ -177,10 +177,11 @@ This tool is for **research and learning purposes only** and is not a substitute
 
 ---
 
-## 🧑‍💻 Author
+## ðŸ§‘â€ðŸ’» Author
 
-**Samar** 🔗 [GitHub Profile](https://github.com/samar018)
+**Omlan Hasan** 🔗 [GitHub Profile](https://github.com/OmlanHasan007)
 
-## 📜 License
+## ðŸ“œ License
 
 Open-source for research and educational use only.
+
