@@ -1,44 +1,44 @@
-﻿# ðŸ§  Multi-Tool Medical Agent
+﻿# 🧠 Multi-Tool Medical Agent
 
 An AI-driven medical assistant built with **OpenAI GPT-4o**, **LangChain**, and **SQLite**, featuring a **Streamlit web UI**, **conversation memory**, **PDF report export**, and support for **5 medical datasets**.
 
 ---
 
-## ðŸ†• What's New (v2.0)
+## 🆕 What's New (v2.0)
 
 | Feature | Description |
 |---|---|
-| ðŸ–¥ï¸ **Streamlit Web UI** | Full chat interface with example queries and live responses |
-| ðŸ§  **Conversation Memory** | Remembers the last 10 turns â€” ask follow-up questions naturally |
-| ðŸ“„ **PDF Report Export** | Export the full session as a formatted PDF with one click |
-| ðŸŒ¬ï¸ **Asthma Dataset** | New `AsthmaDBTool` for asthma diagnosis queries |
-| ðŸ«˜ **Kidney Disease Dataset** | New `KidneyDBTool` for chronic kidney disease queries |
+| 🖥️ Streamlit Web UI | Full chat interface with example queries and live responses |
+| 🧠 Conversation Memory | Remembers the last 10 turns — ask follow-up questions naturally |
+| 📄 PDF Report Export | Export the full session as a formatted PDF with one click |
+| 🌬️ Asthma Dataset | New AsthmaDBTool for asthma diagnosis queries |
+| 🫘 Kidney Disease Dataset | New KidneyDBTool for chronic kidney disease queries |
 
 ---
 
-## ðŸŽ¯ Objective: Intelligent Medical Query Router
+## 🎯 Objective: Intelligent Medical Query Router
 
 This project creates a **Multi-Tool OpenAI Agent** that automatically routes questions to the correct source:
 
-1. ðŸ©º **Structured medical data (SQL):** Statistical questions about 5 medical datasets.
-2. ðŸŒ **General medical web search:** Definitions, symptoms, treatments, and more.
+1. 🩺 **Structured medical data (SQL):** Statistical questions about 5 medical datasets.
+2. 🌐 **General medical web search:** Definitions, symptoms, treatments, and more.
 
 ---
 
-## ðŸ§© Tools Overview
+## 🧩 Tools Overview
 
 | Tool | Dataset | Access |
 |---|---|---|
-| `HeartDiseaseDBTool` | Heart Disease | SQLite |
-| `CancerDBTool` | Cancer Prediction | SQLite |
-| `DiabetesDBTool` | Diabetes | SQLite |
-| `AsthmaDBTool` | â­ Asthma | SQLite |
-| `KidneyDBTool` | â­ Chronic Kidney Disease | SQLite |
-| `MedicalWebSearchTool` | Web (DuckDuckGo) | HTTP |
+| HeartDiseaseDBTool | Heart Disease | SQLite |
+| CancerDBTool | Cancer Prediction | SQLite |
+| DiabetesDBTool | Diabetes | SQLite |
+| AsthmaDBTool | Asthma | SQLite |
+| KidneyDBTool | Chronic Kidney Disease | SQLite |
+| MedicalWebSearchTool | Web (DuckDuckGo) | HTTP |
 
 ---
 
-## ðŸ§° Tech Stack
+## 🧰 Tech Stack
 
 | Component | Technology |
 |---|---|
@@ -48,128 +48,115 @@ This project creates a **Multi-Tool OpenAI Agent** that automatically routes que
 | Database | SQLite |
 | Web UI | Streamlit |
 | PDF Generation | ReportLab |
-| Memory | LangChain `ConversationBufferWindowMemory` |
+| Memory | LangChain ConversationBufferWindowMemory |
 
 ---
 
-## ðŸ“Š Datasets
+## 📊 Datasets
 
 | Dataset | Source |
 |---|---|
-| Heart Disease | [Kaggle](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset) |
-| Cancer Prediction | [Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/cancer-prediction-dataset) |
-| Diabetes | [Kaggle](https://www.kaggle.com/datasets/mathchi/diabetes-data-set) |
-| Asthma | [Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/asthma-disease-dataset) |
-| Chronic Kidney Disease | [Kaggle](https://www.kaggle.com/datasets/mansoordaku/ckdisease) |
+| Heart Disease | https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset |
+| Cancer Prediction | https://www.kaggle.com/datasets/rabieelkharoua/cancer-prediction-dataset |
+| Diabetes | https://www.kaggle.com/datasets/mathchi/diabetes-data-set |
+| Asthma | https://www.kaggle.com/datasets/rabieelkharoua/asthma-disease-dataset |
+| Chronic Kidney Disease | https://www.kaggle.com/datasets/mansoordaku/ckdisease |
 
 ---
 
-## âš™ï¸ Setup Instructions
+## ⚙️ Setup Instructions
 
-### 1ï¸âƒ£ Clone the Repository
+### 1. Clone the Repository
 
-```bash
-git clone https://github.com/OmlanHasan007/medical-tool-Multi-Agent.git
-cd medical-tool-Multi-Agent
-```
+    git clone https://github.com/OmlanHasan007/medical-tool-Multi-Agent.git
+    cd medical-tool-Multi-Agent
 
-### 2ï¸âƒ£ Create Virtual Environment
+### 2. Create Virtual Environment
 
-```bash
-python -m venv venv
-source venv/bin/activate        # macOS/Linux
-venv\Scripts\activate           # Windows
-```
+    python -m venv venv
+    source venv/bin/activate        # macOS/Linux
+    venv\Scripts\activate           # Windows
 
-### 3ï¸âƒ£ Install Dependencies
+### 3. Install Dependencies
 
-```bash
-pip install -r requirements.txt
-```
+    pip install -r requirements.txt
 
-### 4ï¸âƒ£ Add OpenAI API Key
+### 4. Add OpenAI API Key
 
-```bash
-cp .env.example .env
-# Edit .env and paste your OPENAI_API_KEY
-```
+    cp .env.example .env
+    # Edit .env and paste your OPENAI_API_KEY
 
-### 5ï¸âƒ£ Prepare Databases
+### 5. Prepare Databases
 
-Download the CSV files from Kaggle into the `data/` folder, then run:
+Download the CSV files from Kaggle into the data/ folder, then run:
 
-```bash
-python scripts/convert_csv_to_sqlite.py data/heart.csv heart_disease.db --table-name heart
-python scripts/convert_csv_to_sqlite.py data/cancer.csv cancer.db --table-name cancer
-python scripts/convert_csv_to_sqlite.py data/diabetes.csv diabetes.db --table-name diabetes
-python scripts/convert_csv_to_sqlite.py data/asthma.csv asthma.db --table-name asthma
-python scripts/convert_csv_to_sqlite.py data/kidney.csv kidney.db --table-name kidney
-```
+    python scripts/convert_csv_to_sqlite.py data/csv_xlsx/heart.csv heart_disease.db --table-name heart
+    python scripts/convert_csv_to_sqlite.py data/csv_xlsx/diabetes.csv diabetes.db --table-name diabetes
+    python scripts/convert_csv_to_sqlite.py "data/csv_xlsx/The_Cancer_data_1500_V2.csv" cancer.db --table-name cancer
+    python scripts/convert_csv_to_sqlite.py data/asthma.csv asthma.db --table-name asthma
+    python scripts/convert_csv_to_sqlite.py data/kidney.csv kidney.db --table-name kidney
 
 ---
 
-## ðŸš€ Running the Agent
+## 🚀 Running the Agent
 
 ### Web UI (Recommended)
 
-```bash
-streamlit run app.py
-```
+    streamlit run app.py
 
-Open [http://localhost:8501](http://localhost:8501) in your browser.
+Open http://localhost:8501 in your browser.
 
 ### CLI Mode
 
-```bash
-python main_agent.py
-```
+    python main_agent.py
 
 ---
 
-## ðŸ“ Project Structure
+## 📁 Project Structure
 
-```
-multi-tool-med-agent/
-â”œâ”€â”€ app.py                        # â­ Streamlit Web UI
-â”œâ”€â”€ main_agent.py                 # Agent builder + CLI entry point
-â”œâ”€â”€ tools/
-â”‚   â”œâ”€â”€ __init__.py
-â”‚   â”œâ”€â”€ base_db_tool.py           # Shared SQL agent base class
-â”‚   â”œâ”€â”€ heart_tool.py
-â”‚   â”œâ”€â”€ cancer_tool.py
-â”‚   â”œâ”€â”€ diabetes_tool.py
-â”‚   â”œâ”€â”€ asthma_tool.py            # â­ New
-â”‚   â”œâ”€â”€ kidney_tool.py            # â­ New
-â”‚   â””â”€â”€ web_search_tool.py
-â”œâ”€â”€ utils/
-â”‚   â”œâ”€â”€ __init__.py
-â”‚   â””â”€â”€ pdf_report.py             # â­ PDF export (ReportLab)
-â”œâ”€â”€ scripts/
-â”‚   â””â”€â”€ convert_csv_to_sqlite.py
-â”œâ”€â”€ data/                         # Raw CSVs (not committed)
-â”œâ”€â”€ exports/                      # Generated PDFs (not committed)
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ .env.example
-â”œâ”€â”€ .gitignore
-â””â”€â”€ README.md
-```
+    medical-tool-Multi-Agent/
+    ├── app.py                        # Streamlit Web UI
+    ├── main_agent.py                 # Agent builder + CLI entry point
+    ├── tools/
+    │   ├── __init__.py
+    │   ├── base_db_tool.py           # Shared SQL agent base class
+    │   ├── heart_tool.py
+    │   ├── cancer_tool.py
+    │   ├── diabetes_tool.py
+    │   ├── asthma_tool.py
+    │   ├── kidney_tool.py
+    │   └── web_search_tool.py
+    ├── utils/
+    │   ├── __init__.py
+    │   └── pdf_report.py             # PDF export (ReportLab)
+    ├── scripts/
+    │   └── convert_csv_to_sqlite.py
+    ├── src/                          # Original chatbot with RAG + ChromaDB
+    ├── data/                         # CSV datasets
+    ├── exports/                      # Generated PDFs
+    ├── configs/
+    │   └── app_config.yml
+    ├── requirements.txt
+    ├── .env.example
+    ├── .gitignore
+    └── README.md
 
 ---
 
-## ðŸ’¡ Example Queries
+## 💡 Example Queries
 
 | Query | Routed To |
 |---|---|
-| "Show average age of heart patients." | `HeartDiseaseDBTool` |
-| "What causes heart disease?" | `MedicalWebSearchTool` |
-| "What % of cancer patients are female?" | `CancerDBTool` |
-| "How many asthma patients have severe symptoms?" | `AsthmaDBTool` |
-| "What is the average creatinine level in kidney patients?" | `KidneyDBTool` |
-| "How is diabetes treated?" | `MedicalWebSearchTool` |
+| "Show average age of heart patients." | HeartDiseaseDBTool |
+| "What causes heart disease?" | MedicalWebSearchTool |
+| "What percentage of cancer patients are female?" | CancerDBTool |
+| "How many asthma patients have severe symptoms?" | AsthmaDBTool |
+| "What is the average creatinine level in kidney patients?" | KidneyDBTool |
+| "How is diabetes treated?" | MedicalWebSearchTool |
 
 ---
 
-## âš ï¸ Safety Note
+## ⚠️ Safety Note
 
 LLM-generated SQL queries are used against **read-only** SQLite files. Never connect this agent to a writable or production database.
 
@@ -177,11 +164,12 @@ This tool is for **research and learning purposes only** and is not a substitute
 
 ---
 
-## ðŸ§‘â€ðŸ’» Author
+## 🧑‍💻 Author
 
-**Omlan Hasan** 🔗 [GitHub Profile](https://github.com/OmlanHasan007)
+**Omlan Hasan** — [GitHub Profile](https://github.com/OmlanHasan007)
 
-## ðŸ“œ License
+Built as a personal learning project to develop skills in AI agents, LangChain, and medical data analysis.
+
+## 📜 License
 
 Open-source for research and educational use only.
-
