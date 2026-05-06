@@ -1,7 +1,6 @@
 ﻿import os
-import sqlite3
 from langchain.tools import BaseTool
-from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
@@ -19,9 +18,18 @@ class BaseDBTool(BaseTool):
             return f"Database file '{self.db_path}' not found. Please run the CSV-to-SQLite conversion script first."
         try:
             db = SQLDatabase.from_uri(f"sqlite:///{self.db_path}")
-            llm = ChatOpenAI(model="gpt-4o", temperature=0, openai_api_key=os.getenv("OPENAI_API_KEY"))
+            llm = ChatAnthropic(
+                model="claude-3-5-sonnet-20241022",
+                temperature=0,
+                anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
+            )
             toolkit = SQLDatabaseToolkit(db=db, llm=llm)
-            agent = create_sql_agent(llm=llm, toolkit=toolkit, agent_type=AgentType.OPENAI_FUNCTIONS, verbose=False)
+            agent = create_sql_agent(
+                llm=llm,
+                toolkit=toolkit,
+                agent_type=AgentType.OPENAI_FUNCTIONS,
+                verbose=False
+            )
             return agent.run(query)
         except Exception as e:
             return f"Error querying {self.db_path}: {e}"

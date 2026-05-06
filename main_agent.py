@@ -1,12 +1,12 @@
-"""
-Multi-Tool Medical Agent — main entry point (CLI mode).
+﻿"""
+Multi-Tool Medical Agent - main entry point (CLI mode).
 For the web UI, run: streamlit run app.py
 """
 
 import os
 from dotenv import load_dotenv
 from langchain.agents import initialize_agent, AgentType
-from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain.memory import ConversationBufferWindowMemory
 
 from tools.heart_tool import HeartDiseaseDBTool
@@ -19,16 +19,16 @@ from tools.web_search_tool import MedicalWebSearchTool
 load_dotenv()
 
 def build_agent(verbose: bool = True):
-    llm = ChatOpenAI(
-        model="gpt-4o",
+    llm = ChatAnthropic(
+        model="claude-3-5-sonnet-20241022",
         temperature=0,
-        openai_api_key=os.getenv("OPENAI_API_KEY"),
+        anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
     )
 
     memory = ConversationBufferWindowMemory(
         memory_key="chat_history",
         return_messages=True,
-        k=10,                   # keep last 10 turns
+        k=10,
     )
 
     tools = [
@@ -43,7 +43,7 @@ def build_agent(verbose: bool = True):
     agent = initialize_agent(
         tools=tools,
         llm=llm,
-        agent=AgentType.OPENAI_FUNCTIONS,
+        agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
         memory=memory,
         verbose=verbose,
         handle_parsing_errors=True,
