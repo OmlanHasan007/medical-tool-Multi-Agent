@@ -3,8 +3,7 @@ from langchain.tools import BaseTool
 from langchain_anthropic import ChatAnthropic
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
-from langchain_community.agent_toolkits.sql.base import create_sql_agent
-from langchain.agents import AgentType
+from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,13 +23,14 @@ class BaseDBTool(BaseTool):
                 anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
             )
             toolkit = SQLDatabaseToolkit(db=db, llm=llm)
-            agent = create_sql_agent(
-                llm=llm,
-                toolkit=toolkit,
-                agent_type=AgentType.OPENAI_FUNCTIONS,
-                verbose=False
+            sql_tools = toolkit.get_tools()
+            agent = create_react_agent(
+                model=llm,
+                tools=sql_tools,
+                prompt=f"You are a SQL expert. Answer questions about the {self.table_name} table. Always write and execute SQL to get the answer. Be concise.",
             )
-            return agent.run(query)
+            result = agent.invoke({"messages": [{"role": "user", "content": query}]})
+            return result["messages"][-1].content
         except Exception as e:
             return f"Error querying {self.db_path}: {e}"
 
