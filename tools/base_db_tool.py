@@ -18,7 +18,7 @@ class BaseDBTool(BaseTool):
         try:
             db = SQLDatabase.from_uri(f"sqlite:///{self.db_path}")
             llm = ChatAnthropic(
-                model="claude-3-5-sonnet-20241022",
+                model="claude-sonnet-4-5",
                 temperature=0,
                 anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
             )

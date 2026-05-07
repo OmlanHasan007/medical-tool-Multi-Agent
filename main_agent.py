@@ -56,7 +56,7 @@ def build_agent(verbose: bool = True):
         raise ValueError("ANTHROPIC_API_KEY not found. Please check your .env file.")
 
     llm = ChatAnthropic(
-        model="claude-3-5-sonnet-20241022",
+        model="claude-sonnet-4-5",
         temperature=0,
         anthropic_api_key=api_key
     )
